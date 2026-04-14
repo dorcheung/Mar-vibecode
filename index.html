@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biochem Brew</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="amino-container" class="amino-container">
+        <!-- Floating amino acids will spawn here -->
+    </div>
+
+    <!-- Easter Egg Overlay -->
+    <div id="easter-egg" class="hidden">
+        <h2>ATOMIC SOUP CREATED</h2>
+        <button id="enter-game-btn" class="glow-on-hover" style="margin-top: 20px;">ENTER THE SOUP</button>
+    </div>
+
+    <!-- Game UI overlay -->
+    <div id="game-ui" class="hidden">
+        <div id="game-header">
+            <h2 id="pill-score">Pills Remaining: 0</h2>
+            <button id="quit-btn" class="glow-on-hover" style="width: 150px;">Quit Game</button>
+        </div>
+        <canvas id="gameCanvas"></canvas>
+        <div id="cat-meme-container" class="hidden">
+            <h2 style="color: #bc13fe; margin-bottom: 10px;">You won! Enjoy a cat:</h2>
+            <img id="cat-meme-img" src="" alt="Victory Cat">
+        </div>
+    </div>
+
+    <main id="main-panel" class="glass-panel">
+        <h1>Biochem Brew</h1>
+        
+        <div class="fact-container">
+            <p id="fact-text">Awaiting scientific synthesis...</p>
+        </div>
+
+        <div class="beaker-wrapper" id="fetch-btn">
+            <div class="beaker">
+                <div class="liquid" id="beaker-liquid"></div>
+                <div class="stirring-rod" id="rod"></div>
+            </div>
+            <p class="fetch-label">Synthesize Fact</p>
+        </div>
+
+    </main>
+
+    <script src="game.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
