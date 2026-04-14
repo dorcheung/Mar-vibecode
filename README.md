@@ -1,49 +1,50 @@
-# BiochemApp - Biochem Brew
+# Vibecoding - Interactive Game Portfolio
 
-An interactive web application that teaches biochemistry through engaging interactive elements, floating animations, and a hidden Pac-Man-style game.
+A collection of interactive web applications built with vanilla JavaScript, HTML, and CSS.
 
 ## Overview
 
-**Biochem Brew** is an educational game that combines fun interactive mechanics with real biochemistry facts. Click a beaker to synthesize random biochemistry facts, watch amino acids float across your screen, and unlock a hidden maze game.
+**Vibecoding** is a project portfolio featuring two distinct interactive games: **BiochemApp** (educational biochemistry game) and **NewsApp** (action-based news delivery game). Both applications combine fun interactive mechanics with engaging gameplay.
 
 ## Features
 
-### 1. **Fact Synthesis System**
+### 1. **BiochemApp - Biochem Brew**
 - Click the beaker button to "synthesize" and display random biochemistry facts
-- Facts range from enzyme kinetics to vitamin deficiencies
-- Facts are loaded from `facts.json` for easy expansion
-- Includes ~15 carefully curated biochemistry facts
-
-### 2. **Interactive Amino Acid Animation**
 - 20 amino acids float around the screen with particle-like animations
-- Amino acids have random velocities, sizes, and opacity
-- Creates a visually engaging background while educating users
-- Fetches molecular structure images from PubChem API using SMILES representations
-- Each amino acid has an associated CID (Compound ID) for data lookup
+- Fetches molecular structure images from PubChem API
+- Unlocks a hidden Pac-Man-style maze game with interactive gameplay
+- ~15 carefully curated biochemistry facts
 
-### 3. **Easter Egg - Pac-Man Style Game**
-- Clicking the main text area triggers the "Atomic Soup" easter egg
-- Unlocks an interactive maze game with:
-  - **Player Controls**: Arrow keys or WASD to navigate
-  - **Objective**: Collect all pills in the maze (Pac-Man style)
-  - **Collision Detection**: Walls block movement, precise boundary checking
-  - **Win Condition**: Collect all pills to complete the level
-  - **Victory Screen**: Displays a random cat GIF as reward
+### 2. **NewsApp - Breaking News Delivery**
+- Dynamic physics-based movement with gravity mechanics
+- Score tracking system for each successful news delivery
+- 3-life health system with invincibility frames after hits
+- Real-time score and lives display
+- Beautiful space theme with animated night sky backdrop
 
 ## Technical Architecture
 
 ### File Structure
 ```
-BiochemApp/
-├── index.html       # Main HTML structure and UI layout
-├── script.js        # Main application logic and fact system
-├── game.js          # Maze game engine and player mechanics
-├── style.css        # Styling and animations
-├── facts.json       # Biochemistry facts database
-└── README.md        # Documentation
+Vibecoding/
+├── BiochemApp/
+│   ├── index.html       # Main HTML structure and UI layout
+│   ├── script.js        # Main application logic and fact system
+│   ├── game.js          # Maze game engine and player mechanics
+│   ├── style.css        # Styling and animations
+│   └── facts.json       # Biochemistry facts database
+│
+├── NewsApp/
+│   ├── index.html       # Main game interface
+│   ├── game.js          # Core game logic and mechanics
+│   ├── script.js        # Additional functionality
+│   ├── style.css        # Styling and animations
+│   └── NewsFetch.md     # Project documentation
+│
+└── README.md            # Documentation
 ```
 
-### Core Components
+### Core Components - BiochemApp
 
 #### **script.js - Main Application**
 - **Fact Management**: Loads facts from JSON and displays random selections
@@ -65,10 +66,7 @@ BiochemApp/
   
 - **Rendering Loop**:
   - Canvas-based animation at 60+ FPS
-  - Player rendered as an animated circle with:
-    - Animated mouth (opening/closing for Pac-Man effect)
-    - Rotation angle based on direction
-    - Visual feedback during movement
+  - Player rendered with animated Pac-Man effect
 
 #### **style.css - Visual Design**
 - **Glass Morphism**: Semi-transparent panel with backdrop blur
@@ -77,17 +75,36 @@ BiochemApp/
 - **Color Scheme**: Purple/cyan cyberpunk aesthetic with animated gradients
 
 #### **facts.json - Content Database**
-- Array of biochemistry facts
-- Each fact covers important biochemistry concepts:
+- Array of biochemistry facts covering:
   - Enzyme kinematics and catalysis
   - Metabolic pathways (Krebs Cycle, electron transport chain)
   - Vitamin and mineral biochemistry
   - Protein synthesis and degradation
   - DNA replication accuracy
 
+### Core Components - NewsApp
+
+#### **game.js - Game Logic**
+- **Game Variables**: Canvas setup, score tracking, lives management, frames counter
+- **Gravity System**: GRAVITY = 0.4, JUMP_INITIAL = -5.8, MAX_HOLD_FRAMES = 18
+- **Player Mechanics**: Position-based movement with physics
+- **Collision Detection**: Obstacle avoidance and ground collision
+- **Scoring System**: Points for collecting news items
+
+#### **script.js - Additional Functionality**
+- **UI Management**: Score display and lives display updates
+- **Event Handling**: Input processing and game state management
+- **Animation Loop**: Rendering at 60+ FPS
+
+#### **style.css - Visual Design**
+- **Space Theme**: Night sky backdrop with stars and animated elements
+- **Glass Effects**: Semi-transparent UI panels
+- **Responsive Design**: Adapts to different screen sizes
+- **Animation Effects**: Smooth transitions and visual feedback
+
 ## How It Works
 
-### User Flow
+### BiochemApp User Flow
 
 1. **Initial Load**
    - Page displays main panel with "Biochem Brew" title
@@ -96,9 +113,8 @@ BiochemApp/
 
 2. **Interact with Beaker**
    - User clicks beaker button
-   - Beaker animation triggers (stirring rod animation)
+   - Beaker animation triggers
    - Random fact displays from facts.json
-   - Amino acids spawn with new random properties
 
 3. **Unlock Easter Egg**
    - Click on the fact text area
@@ -107,46 +123,63 @@ BiochemApp/
 
 4. **Play Maze Game**
    - Use Arrow keys or WASD to move
-   - Navigate through the maze to collect pills (shown as dots)
-   - Each pill collected updates the score
+   - Navigate through the maze to collect pills
    - Collect all pills to trigger victory screen
    - Random cat image displays as reward
-   - Click "Quit Game" to return to main panel
 
-## Biochemistry Facts Coverage
+### NewsApp User Flow
 
-Topics included in the fact database:
-- **Vitamin Chemistry**: B12 (cobalamin), C, B3 (niacin), scurvy, pellagra
-- **Enzyme Kinetics**: Enzyme mistake rates, proofreading mechanisms
-- **Energy Metabolism**: ATP production, brain energy usage, Krebs Cycle
-- **Hemoglobin**: Bohr effect and oxygen affinity
-- **Lipids**: Essential fatty acids and desaturase enzymes
-- **Bile & Digestion**: Bile salt emulsification, iron absorption
-- **Protein Modification**: Ubiquitin tagging for protein destruction
-- **Genetic Code**: Selenocysteine and unique tRNA mechanisms
+1. **Game Start**
+   - Press any key or click to begin
+   - Player character appears in game world with space backdrop
+
+2. **Active Gameplay**
+   - Use arrow keys or WASD to move
+   - Hold spacebar to jump with hold mechanics
+   - Collect news items for points
+   - Avoid obstacles to maintain lives
+
+3. **Game Over**
+   - Lose all 3 lives and game ends
+   - Final score displayed
+   - Option to restart
 
 ## Technologies Used
 
 - **HTML5**: Semantic markup and canvas for game rendering
 - **CSS3**: Glass morphism, animations, gradients, responsive design
 - **Vanilla JavaScript**: No frameworks, pure DOM manipulation and game logic
-- **Canvas API**: 2D graphics for maze game rendering
-- **PubChem API**: Molecular structure data for amino acids
-- **JSON**: Data storage for facts
+- **Canvas API**: 2D graphics for game rendering
+- **PubChem API**: Molecular structure data (BiochemApp only)
+- **JSON**: Data storage for facts (BiochemApp only)
 
 ## How to Run
 
-1. Clone the repository
+### BiochemApp
+1. Navigate to `BiochemApp` directory
 2. Open `index.html` in a modern web browser
 3. Click the beaker to see biochemistry facts
 4. Click the fact text to unlock the maze game
 
+### NewsApp
+1. Navigate to `NewsApp` directory
+2. Open `index.html` in a modern web browser
+3. Press any key or click to start
+4. Use arrow keys/WASD to move, spacebar to jump
+
 ## Expandability
 
+### BiochemApp
 - **Add Facts**: Simply add new biochemistry facts to `facts.json`
 - **Add Amino Acids**: Extend the `AMINO_ACIDS` array in `script.js` with new CIDs from PubChem
 - **Modify Maze**: Edit the `initialMaze` 2D array in `game.js` to create new maze layouts
 - **Customize Styling**: Adjust CSS variables and animation timings in `style.css`
+
+### NewsApp
+- **Add Obstacles**: Modify obstacle arrays in `game.js`
+- **Adjust Physics**: Tweak gravity and jump constants for different feel
+- **New Items**: Add collectible types in the scoring system
+- **Difficulty Levels**: Implement progressive difficulty scaling
 
 ## Browser Compatibility
 

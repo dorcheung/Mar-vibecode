@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking News Delivery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sky"></div>
+    <div class="stars"></div>
+    <div class="time-container" id="time-container">
+    </div>
+
+    <!-- Game UI overlay -->
+    <div id="game-ui" class="hidden">
+        <div id="game-header">
+            <h2 id="score-display">Score: 0</h2>
+            <h2 id="lives-display" style="color: #ff3366; letter-spacing: 5px;">♥♥♥</h2>
+            <button id="quit-btn" class="glow-on-hover" style="width: 150px;">Quit Game</button>
+        </div>
+        
+        <canvas id="gameCanvas"></canvas>
+        
+        <div id="game-over-container" class="hidden" style="display: flex; flex-direction: column; align-items: center;">
+            <h2 id="game-over-title" style="color: #ff0055; margin-bottom: 15px;">Game Over</h2>
+            <p id="game-over-msg" style="margin-bottom: 20px; font-size: 1.2rem;">Score: 0</p>
+            <p style="font-size: 0.9rem; color: #ccc;">Press Space or Click Play to Restart</p>
+            <button id="restart-btn" class="glow-on-hover" style="margin-top:20px;">Play Again</button>
+        </div>
+    </div>
+
+    <main id="main-panel" class="glass-panel">
+        <h1>Global Dispatch</h1>
+        
+        <div class="news-card">
+            <h2 id="news-headline">Awaiting Transmission...</h2>
+            <p id="news-summary" style="font-size: 0.9rem; line-height: 1.4; color: #ccc;">Fetching breaking news data from global feeds. Stand by.</p>
+            <div id="news-citation" class="citation">- Initializing</div>
+        </div>
+
+        <div class="newspaper-wrapper" id="fetch-btn">
+            <!-- CSS Newspaper icon -->
+            <div class="newspaper">
+                <div class="roll" id="roll-anim">
+                    <div class="paper-line"></div>
+                    <div class="paper-line"></div>
+                    <div class="paper-line"></div>
+                </div>
+            </div>
+            <p class="fetch-label">Fetch News</p>
+        </div>
+    </main>
+
+    <!-- Easter egg prompt for Flappy Kiki -->
+    <div id="easter-egg" class="hidden">
+        <h2>SURPRISE NEWS DROP!</h2>
+        <button id="enter-game-btn" class="glow-on-hover" style="margin-top: 20px;">LAUNCH KIKI</button>
+    </div>
+
+    <script src="game.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

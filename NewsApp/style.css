@@ -1,0 +1,312 @@
+:root {
+    --sky-bg: #0b1021;
+    --neon-blue: #00f3ff;
+    --neon-orange: #ff9900;
+    --glass-bg: rgba(15, 20, 40, 0.7);
+    --glass-border: rgba(0, 243, 255, 0.2);
+    --text-color: #e0eaff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Space Mono', monospace;
+}
+
+body {
+    background-color: var(--sky-bg);
+    color: var(--text-color);
+    overflow: hidden; 
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Sky Background Layers */
+.sky {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at bottom, #1b2735 0%, #090a0f 100%);
+    z-index: 0;
+}
+
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 1;
+    /* Tiny stars to show humans are tiny */
+    box-shadow: 10vw 10vh 1px rgba(255,255,255,0.8), 20vw 50vh 1px rgba(255,255,255,0.6), 40vw 30vh 1px rgba(255,255,255,0.9), 80vw 20vh 1px rgba(255,255,255,0.5), 60vw 80vh 1px rgba(255,255,255,0.8), 90vw 90vh 1px rgba(255,255,255,0.4), 50vw 10vh 1px rgba(255,255,255,0.7), 70vw 60vh 1px rgba(255,255,255,0.6), 30vw 90vh 1px rgba(255,255,255,0.8), 15vw 70vh 1px rgba(255,255,255,0.5), 85vw 45vh 1px rgba(255,255,255,0.9), 45vw 55vh 1px rgba(255,255,255,0.7),
+    5vw 25vh 1px #fff, 95vw 15vh 1px #fff, 35vw 75vh 1px #fff;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    animation: slowDrift 150s linear infinite;
+}
+
+@keyframes slowDrift {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-100vh); }
+}
+
+/* Time Container */
+.time-container {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    z-index: 10;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 1px;
+    text-align: right;
+}
+
+/* Main Panel */
+.glass-panel {
+    position: relative;
+    z-index: 10;
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    padding: 3rem;
+    max-width: 650px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    transition: transform 0.3s;
+}
+
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    background: linear-gradient(90deg, #fff, #aaa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+.news-card {
+    min-height: 180px;
+    margin-bottom: 2rem;
+    text-align: left;
+    background: rgba(0,0,0,0.3);
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid var(--neon-orange);
+    position: relative;
+    overflow: hidden;
+}
+
+.news-card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #fff;
+    line-height: 1.3;
+}
+
+.citation {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    font-size: 0.75rem;
+    color: var(--neon-orange);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Newspaper Fetcher Icon */
+.newspaper-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 2rem;
+    transition: transform 0.2s;
+}
+
+.newspaper-wrapper:hover {
+    transform: scale(1.05);
+}
+
+.fetch-label {
+    margin-top: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--neon-orange);
+    letter-spacing: 2px;
+}
+
+.newspaper {
+    position: relative;
+    width: 80px;
+    height: 40px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    box-shadow: inset -5px -5px 10px rgba(0,0,0,0.2), 0 5px 15px rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.paper-line {
+    width: 80%;
+    height: 4px;
+    background: #ccc;
+    margin: 4px 0;
+    border-radius: 2px;
+}
+
+.roll {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.unrolling {
+    animation: unrollPaper 0.6s forwards;
+}
+
+@keyframes unrollPaper {
+    0% { transform: scaleY(1); }
+    50% { transform: scaleY(2.5) scaleX(0.9); }
+    100% { transform: scaleY(1); }
+}
+
+/* Easter Egg */
+.hidden {
+    display: none !important;
+}
+
+#easter-egg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background: rgba(255, 153, 0, 0.2);
+    border: 3px solid var(--neon-orange);
+    box-shadow: 0 0 50px var(--neon-orange);
+    padding: 3rem;
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#easter-egg h2 {
+    color: var(--neon-orange);
+    font-size: 2.5rem;
+    text-shadow: 0 0 20px var(--neon-orange);
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+/* Game Styles */
+#game-ui {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 10, 30, 0.95);
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#game-header {
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#gameCanvas {
+    background: #1e2c3a; /* Dark sky for flappy bird */
+    border: 4px solid #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+
+#game-over-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    padding: 30px 50px;
+    border: 3px solid #ff0055;
+    border-radius: 15px;
+    text-align: center;
+    z-index: 2010;
+}
+
+/* Common Buttons */
+.glow-on-hover {
+    width: 250px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:hover:before { opacity: 1; }
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
