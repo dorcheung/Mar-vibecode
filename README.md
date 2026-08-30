@@ -154,6 +154,7 @@ Vibecoding/
 - **JSON**: Data storage for facts (BiochemApp only)
 
 ## How to Run
+Download files locally on your computer.
 
 ### BiochemApp
 1. Navigate to `BiochemApp` directory
@@ -189,4 +190,4 @@ Vibecoding/
 
 ## License
 
-Educational project for biochemistry learning.
+Educational project for biochemistry learning and vibe coding.
